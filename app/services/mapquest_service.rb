@@ -1,7 +1,8 @@
 class MapquestService
-  def self.search(from_location, to_location)
-    content = conn.get("?from=#{from_location}&to=#{to_location}", params: {'key' => "#{ENV['mapquest_key']}"})
-    results = parse_response(response)
+  def self.distance(from_location, to_location)
+    content = conn.get("?from=#{from_location}&to=#{to_location}", key: "#{ENV['mapquest_key']}")
+    results = parse_response(content)
+    results[:route][:distance]
   end
 
   def self.parse_response(response)
