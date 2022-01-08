@@ -3,7 +3,6 @@ class YelpService
     content = conn.get("", {location: location, term: term}, Authorization: "#{ENV['yelp_key']}")
 
     results = parse_response(content)
-    results[:businesses][0..14]
   end
 
   def self.parse_response(response)
